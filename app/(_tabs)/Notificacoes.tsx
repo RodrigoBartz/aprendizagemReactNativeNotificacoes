@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useLocalSearchParams} from 'expo-router';
+import moment from 'moment';
 
 const NotificationScreen = () => {
   const [notifications, setNotifications] = useState([]);
@@ -31,9 +32,9 @@ const NotificationScreen = () => {
       {notifications.map((notification, index) => (
         <View key={index} style={styles.cardContainer}>
           <View style={styles.headerContainer}>
-            <Text style={styles.senderText}>{notification.usuarioIdAutor}</Text>
+            <Text style={styles.senderText}>{notification.usuario.nomeCompleto}</Text>
             <View style={styles.dateTimeContainer}>
-              <Text style={styles.dateText}>{notification.data}</Text>
+              <Text style={styles.dateText}>{moment(notification.data).format('D MMMM YYYY, h:mm a')}</Text>
             </View>
           </View>
           <Text numberOfLines={3} style={styles.messageText}>
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   senderText: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     flex: 1,
   },
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
   },
   messageText: {
     bottom: 5,
-    height:80,
+    height: 80,
     width: 250,
     fontSize: 16,
     marginBottom: 100,

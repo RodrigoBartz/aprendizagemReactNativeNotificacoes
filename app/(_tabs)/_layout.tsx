@@ -90,6 +90,7 @@ const MenuInferior = () => {
       />
       <Tabs.Screen name="Notificacoes"
         options={{
+          title: "Notificações",
           href: null,
           tabBarBadge: 3,
           //tabBarLabel: 'Notificações',
